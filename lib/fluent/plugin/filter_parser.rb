@@ -49,7 +49,7 @@ class Fluent::ParserFilter < Fluent::Filter
             r = handle_parsed(tag, record, t, values)
             new_es.add(t, r)
           else
-            log.warn "pattern not match with data '#{raw_value}'" unless @suppress_parse_error_log
+            log.warn "pattern not match with data '#{raw_value.dump}'" unless @suppress_parse_error_log
             if @reserve_data
               t = time
               r = handle_parsed(tag, record, time, {})
@@ -71,7 +71,7 @@ class Fluent::ParserFilter < Fluent::Filter
               r = handle_parsed(tag, record, t, values)
               new_es.add(t, r)
             else
-              log.warn "pattern not match with data '#{raw_value}'" unless @suppress_parse_error_log
+              log.warn "pattern not match with data '#{raw_value.dump}'" unless @suppress_parse_error_log
               if @reserve_data
                 t = time
                 r = handle_parsed(tag, record, time, {})
